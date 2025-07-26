@@ -24,8 +24,10 @@ extension Target.Dependency {
 let package = Package(
     name: "swift-url-multipart-form-coding-url-routing",
     platforms: [
-        .macOS(.v14),
-        .iOS(.v17)
+      .iOS(.v13),
+      .macOS(.v10_15),
+      .tvOS(.v13),
+      .watchOS(.v6),
     ],
     products: [
 //        This library is intended to me moved to a separate swift-url-multipart-form-coding package

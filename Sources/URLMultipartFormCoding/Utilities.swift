@@ -1,7 +1,6 @@
 import Foundation
 import URLRouting
 
-
 extension DateFormatter {
     @MainActor public static let form: DateFormatter = {
         let formatter = DateFormatter()
@@ -18,7 +17,6 @@ extension URLRouting.Field {
     }
 }
 
-
 extension Foundation.Data {
     package mutating func append(_ string: String) {
         if let data = string.data(using: .utf8) {
@@ -26,4 +24,3 @@ extension Foundation.Data {
         }
     }
 }
-

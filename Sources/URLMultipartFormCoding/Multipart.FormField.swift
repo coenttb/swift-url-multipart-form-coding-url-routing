@@ -25,13 +25,13 @@ extension Multipart {
     public struct FormField {
         /// The name of the form field.
         public let name: String
-        
+
         /// The filename of the field, if it represents a file upload.
         public let filename: String?
-        
+
         /// The MIME content type of the field data.
         public let contentType: String?
-        
+
         /// The raw data content of the field.
         public let data: Data
 
@@ -55,4 +55,3 @@ extension Multipart {
         }
     }
 }
-

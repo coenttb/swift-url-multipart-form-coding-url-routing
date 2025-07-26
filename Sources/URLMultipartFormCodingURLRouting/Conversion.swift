@@ -5,9 +5,9 @@
 //  Created by Coen ten Thije Boonkkamp on 26/07/2025.
 //
 
-import URLRouting
 import Foundation
 import URLFormCoding
+import URLRouting
 
 extension Conversion {
     /// Maps this conversion through a multipart form data conversion.
@@ -38,7 +38,7 @@ extension Conversion {
     ) -> Conversions.Map<Self, Multipart.Conversion<Value>> {
         self.map(.multipart(type, decoder: decoder))
     }
-    
+
     /// Creates a multipart form data conversion for the specified Codable type.
     ///
     /// This static method provides a convenient way to create ``Multipart.Conversion``
@@ -74,7 +74,7 @@ extension Conversion {
     }
 }
 
-extension Conversion {    
+extension Conversion {
     @inlinable
     public static func fileUpload(
         fieldName: String,
@@ -90,4 +90,3 @@ extension Conversion {
         )
     }
 }
-

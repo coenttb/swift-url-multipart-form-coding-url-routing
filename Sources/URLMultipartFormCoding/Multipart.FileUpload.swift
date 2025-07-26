@@ -1,6 +1,5 @@
 import Foundation
 
-
 /// A conversion that handles file uploads in multipart/form-data format.
 ///
 /// `Multipart.FileUpload` provides secure file upload functionality with built-in
@@ -57,22 +56,22 @@ extension Multipart {
     public struct FileUpload {
         /// The unique boundary string used to separate multipart fields.
         public let boundary: String
-        
+
         /// The name of the form field for this file upload.
         private let fieldName: String
-        
+
         /// The filename to include in the multipart headers.
         private let filename: String
-        
+
         /// The file type specification including validation rules.
         private let fileType: FileType
-        
+
         /// The default maximum file size (10MB).
         public static let maxFileSize: Int = 10 * 1024 * 1024  // 10MB default
-        
+
         /// The maximum allowed file size for this upload.
         private let maxSize: Int
-        
+
         /// Creates a new multipart file upload conversion.
         ///
         /// - Parameters:
@@ -103,7 +102,7 @@ extension Multipart {
             self.maxSize = maxSize
             self.boundary = Self.generateBoundary()
         }
-        
+
         /// Generates a cryptographically safe boundary string for multipart data.
         ///
         /// The boundary uses alphanumeric characters and is prefixed with "Boundary-"
@@ -115,39 +114,38 @@ extension Multipart {
             let randomString = (0..<15).map { _ in String(characters.randomElement()!) }.joined()
             return "Boundary-\(randomString)"  // 9 + 15 = 24 characters total
         }
-        
-        
+
         public func validate(_ data: Foundation.Data) throws {
             guard !data.isEmpty else {
                 throw MultipartError.emptyData
             }
-            
+
             guard data.count <= maxSize else {
                 throw MultipartError.fileTooLarge(size: data.count, maxSize: maxSize)
             }
-            
+
             try fileType.validate(data)
         }
-        
+
         public func appendBoundary(to data: inout Foundation.Data) throws {
             guard let boundaryData = "--\(boundary)\r\n".data(using: .utf8) else {
                 throw MultipartError.encodingError
             }
             data.append(boundaryData)
         }
-        
+
         public func appendHeaders(to data: inout Foundation.Data) throws {
             let headers = """
                 Content-Disposition: form-data; name="\(fieldName)"; filename="\(filename)"
                 Content-Type: \(fileType.contentType)\r\n\r\n
                 """
-            
+
             guard let headerData = headers.data(using: .utf8) else {
                 throw MultipartError.encodingError
             }
             data.append(headerData)
         }
-        
+
         public func appendClosingBoundary(to data: inout Foundation.Data) throws {
             guard let boundaryData = "\r\n--\(boundary)--\r\n".data(using: .utf8) else {
                 throw MultipartError.encodingError
@@ -156,7 +154,6 @@ extension Multipart {
         }
     }
 }
-
 
 extension Multipart.FileUpload {
     /// The Content-Type header value for this multipart file upload.
@@ -176,7 +173,6 @@ extension Multipart.FileUpload {
         "multipart/form-data; boundary=\(boundary)"
     }
 }
-
 
 extension Multipart.FileUpload {
     /// Represents a file type with content validation capabilities.
@@ -213,13 +209,13 @@ extension Multipart.FileUpload {
     public struct FileType {
         /// The MIME content type for this file format.
         let contentType: String
-        
+
         /// The file extension (without dot) for this file format.
         let fileExtension: String
-        
+
         /// Validation function that checks if data matches this file type.
         let validate: (Foundation.Data) throws -> Void
-        
+
         /// Creates a new file type specification.
         ///
         /// - Parameters:
@@ -270,13 +266,13 @@ extension Multipart.FileUpload.FileType {
     public struct ImageType {
         /// The MIME content type for this image format.
         let contentType: String
-        
+
         /// The file extension (without dot) for this image format.
         let fileExtension: String
-        
+
         /// Validation function that checks magic numbers for this image type.
         let validate: (Foundation.Data) throws -> Void
-        
+
         /// Creates a new image type specification.
         ///
         /// - Parameters:
@@ -335,12 +331,12 @@ extension Multipart.FileUpload {
         ///   - size: The actual file size in bytes
         ///   - maxSize: The maximum allowed size in bytes
         case fileTooLarge(size: Int, maxSize: Int)
-        
+
         /// The provided content type is invalid or unsupported.
         ///
         /// - Parameter contentType: The invalid content type string
         case invalidContentType(String)
-        
+
         /// File content doesn't match the expected type.
         ///
         /// This error occurs when magic number validation fails, indicating
@@ -350,13 +346,13 @@ extension Multipart.FileUpload {
         ///   - expected: The expected content type
         ///   - detected: The detected content type (if determinable)
         case contentMismatch(expected: String, detected: String?)
-        
+
         /// No file data was provided (empty upload).
         case emptyData
-        
+
         /// The multipart boundary format is invalid.
         case malformedBoundary
-        
+
         /// Failed to encode data in multipart format.
         case encodingError
     }

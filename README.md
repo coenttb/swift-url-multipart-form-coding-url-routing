@@ -3,7 +3,7 @@
 A Swift library that provides multipart form data handling with seamless URLRouting integration, enabling type-safe file uploads and form processing.
 
 [![Swift 6.0](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
-[![Platforms](https://img.shields.io/badge/Platforms-macOS%2014%20|%20iOS%2017-blue.svg)](https://swift.org)
+[![Platforms](https://img.shields.io/badge/Platforms-iOS%2013%20|%20macOS%2010.15%20|%20tvOS%2013%20|%20watchOS%206-blue.svg)](https://swift.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 
 ## Features
@@ -220,7 +220,7 @@ Test coverage includes:
 ## Requirements
 
 - **Swift**: 6.0+
-- **Platforms**: macOS 14.0+, iOS 17.0+
+- **Platforms**: iOS 13.0+, macOS 10.15+, tvOS 13.0+, watchOS 6.0+
 - **Dependencies**: 
   - [swift-url-form-coding](https://github.com/coenttb/swift-url-form-coding) (0.0.1+)
   - [swift-url-routing](https://github.com/pointfreeco/swift-url-routing) (0.6.0+)

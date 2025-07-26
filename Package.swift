@@ -24,25 +24,27 @@ extension Target.Dependency {
 let package = Package(
     name: "swift-url-multipart-form-coding-url-routing",
     platforms: [
-        .macOS(.v14),
-        .iOS(.v17)
+      .iOS(.v13),
+      .macOS(.v10_15),
+      .tvOS(.v13),
+      .watchOS(.v6),
     ],
     products: [
 //        This library is intended to me moved to a separate swift-url-multipart-form-coding package
 //        .library(name: .multipartURLFormCoding, targets: [.multipartURLFormCoding]),
-        .library(name: .multipartURLFormCodingURLRouting, targets: [.multipartURLFormCodingURLRouting]),
+        .library(name: .multipartURLFormCodingURLRouting, targets: [.multipartURLFormCodingURLRouting])
     ],
     dependencies: [
         .package(url: "https://github.com/coenttb/swift-url-form-coding", from: "0.0.1"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.5"),
-        .package(url: "https://github.com/pointfreeco/swift-url-routing", from: "0.6.0"),
+        .package(url: "https://github.com/pointfreeco/swift-url-routing", from: "0.6.0")
     ],
     targets: [
         .target(
             name: .multipartURLFormCoding,
             dependencies: [
                 .urlRouting,
-                .urlFormCoding,
+                .urlFormCoding
             ]
         ),
         .testTarget(
@@ -57,7 +59,7 @@ let package = Package(
             dependencies: [
                 .multipartURLFormCoding,
                 .urlRouting,
-                .urlFormCoding,
+                .urlFormCoding
             ]
         ),
         .testTarget(
@@ -66,7 +68,7 @@ let package = Package(
                 .multipartURLFormCodingURLRouting,
                 .dependenciesTestSupport
             ]
-        ),
+        )
     ],
     swiftLanguageModes: [.v5]
 )

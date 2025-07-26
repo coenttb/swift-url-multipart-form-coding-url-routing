@@ -118,7 +118,7 @@ extension Multipart.FileUpload.FileType {
     }
 
     // MARK: - Office Documents
-    
+
     /// Microsoft Word (.docx) file type.
     ///
     /// Modern Word documents in Office Open XML format.
@@ -144,7 +144,7 @@ extension Multipart.FileUpload.FileType {
     )
 
     // MARK: - Archive Files
-    
+
     /// ZIP archive file type.
     ///
     /// Standard ZIP compressed archive format.
@@ -158,7 +158,7 @@ extension Multipart.FileUpload.FileType {
     )
 
     // MARK: - Audio Files
-    
+
     /// MP3 audio file type.
     ///
     /// MPEG-1 Audio Layer III compressed audio format.
@@ -184,7 +184,7 @@ extension Multipart.FileUpload.FileType {
     )
 
     // MARK: - Video Files
-    
+
     /// MP4 video file type.
     ///
     /// MPEG-4 Part 14 multimedia container format.
@@ -198,7 +198,7 @@ extension Multipart.FileUpload.FileType {
     )
 
     // MARK: - Database Files
-    
+
     /// SQLite database file type.
     ///
     /// SQLite database format.
@@ -212,7 +212,7 @@ extension Multipart.FileUpload.FileType {
     )
 
     // MARK: - Programming Files
-    
+
     /// Swift source code file type.
     ///
     /// Swift programming language source files.
@@ -238,7 +238,7 @@ extension Multipart.FileUpload.FileType {
     )
 
     // MARK: - Font Files
-    
+
     /// TrueType Font file type.
     ///
     /// TrueType font format files.
