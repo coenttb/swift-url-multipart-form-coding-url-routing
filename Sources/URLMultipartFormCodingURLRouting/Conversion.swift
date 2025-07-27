@@ -31,7 +31,6 @@ extension Conversion {
     /// let chainedConversion = Conversion<Data, Data>.identity
     ///     .multipart(UserProfile.self)
     /// ```
-    @inlinable
     public func multipart<Value: Codable>(
         _ type: Value.Type,
         decoder: Form.Decoder = .init()
@@ -65,7 +64,6 @@ extension Conversion {
     /// decoder.parsingStrategy = .brackets
     /// let customConversion = Conversion.multipart(UserProfile.self, decoder: decoder)
     /// ```
-    @inlinable
     public static func multipart<Value: Codable>(
         _ type: Value.Type,
         decoder: Form.Decoder = .init()
@@ -75,7 +73,6 @@ extension Conversion {
 }
 
 extension Conversion {
-    @inlinable
     public static func fileUpload(
         fieldName: String,
         filename: String,
